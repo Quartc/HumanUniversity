@@ -53,7 +53,7 @@ GALLERY_ITEMS = [
 ]
 
 CONTACTS = {
-    'email': 'space.researcher@human-universe.ru',
+    'email': 'N222580@yandex.ru',
     'phone': '+7 (967) 123-45-67',
     'address': 'г. Пенза',
     'social': {
