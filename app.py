@@ -53,8 +53,8 @@ GALLERY_ITEMS = [
 ]
 
 CONTACTS = {
-    'email': 'space.researcher@human-universe.ru',
-    'phone': '+7 (967) 123-45-67',
+    'email': 'N222580@yandex.ru',
+    'phone': '+7 (967) 447-__-__',
     'address': 'г. Пенза',
     'social': {
         'telegram': '@quartc'
@@ -136,7 +136,6 @@ def add_star_to_sky():
     }
     
     user_stars.append(new_star)
-    
     save_stars(user_stars)
     
     return jsonify({'success': True, 'star': new_star})
@@ -151,7 +150,6 @@ def delete_star(star_id):
     global user_stars
     
     user_stars = [star for star in user_stars if star['id'] != star_id]
-    
     save_stars(user_stars)
     
     return jsonify({'success': True})
@@ -164,5 +162,15 @@ def handle_contact_form():
         'message': 'Сообщение успешно отправлено. Свяжемся с вами в ближайшее время!'
     })
 
+@app.route('/api/gallery/<int:item_id>')
+def get_gallery_item(item_id):
+    item = next((item for item in GALLERY_ITEMS if item['id'] == item_id), None)
+    
+    if item:
+        return jsonify(item)
+    else:
+        return jsonify({'error': 'Item not found'}), 404
+
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5001)

@@ -1,4 +1,3 @@
-// ===== БУРГЕР-МЕНЮ =====
 document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Закрытие меню при клике на ссылку
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -18,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // ===== ПЛАВНЫЙ СКРОЛЛ =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -35,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.feature-card, .gallery-item, .contact-detail');
         
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // Инициализация стилей для анимации
     document.querySelectorAll('.feature-card, .gallery-item, .contact-detail').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -60,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll();
     
-    // ===== ИЗМЕНЕНИЕ НАВИГАЦИИ ПРИ СКРОЛЛЕ =====
     const navbar = document.querySelector('.navbar');
     let lastScroll = 0;
     
@@ -78,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ===== СЛАЙДЕР =====
 let currentSlide = 0;
 
 function changeSlide(direction) {
@@ -95,7 +88,6 @@ function changeSlide(direction) {
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     
-    // Обновление активного слайда
     slides.forEach((slide, index) => {
         if (index === currentSlide) {
             slide.classList.add('active');
@@ -105,7 +97,6 @@ function changeSlide(direction) {
     });
 }
 
-// ===== ДИНАМИЧЕСКАЯ ЗАГРУЗКА КОНТЕНТА =====
 async function loadDynamicContent(url, containerId) {
     try {
         const response = await fetch(url);
@@ -124,7 +115,6 @@ async function loadDynamicContent(url, containerId) {
 }
 
 function renderContent(data) {
-    // Функция для рендеринга динамического контента
     if (Array.isArray(data)) {
         return data.map(item => `
             <div class="dynamic-card">
@@ -136,7 +126,6 @@ function renderContent(data) {
     return '';
 }
 
-// ===== ПАРАЛЛАКС ЭФФЕКТ =====
 window.addEventListener('scroll', () => {
     const parallaxElements = document.querySelectorAll('.hero');
     parallaxElements.forEach(element => {
@@ -145,7 +134,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ===== ОБРАБОТКА ФОРМЫ КОНТАКТОВ (дополнительно) =====
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {

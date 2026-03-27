@@ -1,4 +1,3 @@
-/* ===== RESET & БАЗОВЫЕ НАСТРОЙКИ ===== */
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +31,6 @@ body {
     padding: 0 20px;
 }
 
-/* ===== НАВИГАЦИЯ ===== */
 .navbar {
     background: rgba(10, 10, 42, 0.95);
     backdrop-filter: blur(10px);
@@ -121,7 +119,6 @@ body {
     transition: 0.3s;
 }
 
-/* ===== HERO СЕКЦИЯ ===== */
 .hero {
     height: 100vh;
     position: relative;
@@ -168,7 +165,6 @@ body {
     opacity: 0.9;
 }
 
-/* ===== АНИМАЦИИ ===== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -207,7 +203,6 @@ body {
     animation: bounce 2s infinite;
 }
 
-/* ===== КНОПКИ ===== */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -231,7 +226,6 @@ body {
     box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
 }
 
-/* ===== КАРТОЧКИ ===== */
 .features {
     padding: 80px 0;
     background: var(--gray);
@@ -286,7 +280,6 @@ body {
     color: var(--dark);
 }
 
-/* ===== СЛАЙДЕР ===== */
 .slider-container {
     position: relative;
     max-width: 900px;
@@ -342,7 +335,6 @@ body {
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* ===== СТИЛИЗОВАННЫЕ ГИПЕРССЫЛКИ ===== */
 a {
     transition: all 0.3s ease;
 }
@@ -359,7 +351,6 @@ a {
     color: var(--secondary);
 }
 
-/* ===== ГАЛЕРЕЯ ===== */
 .gallery-section {
     padding: 60px 0;
 }
@@ -458,7 +449,6 @@ a {
     transform: scale(1.05);
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
 .modal {
     display: none;
     position: fixed;
@@ -467,7 +457,7 @@ a {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
+    z-index: 9999;
     justify-content: center;
     align-items: center;
 }
@@ -501,7 +491,6 @@ a {
     margin-bottom: 15px;
 }
 
-/* ===== КОНТАКТЫ ===== */
 .contacts-section {
     padding: 60px 0;
 }
@@ -551,7 +540,6 @@ a {
     transform: translateY(-5px);
 }
 
-/* ===== ФОРМА ===== */
 .contact-form-container {
     background: var(--gray);
     padding: 30px;
@@ -621,7 +609,6 @@ a {
     border-radius: 8px;
 }
 
-/* ===== ФУТЕР ===== */
 .footer {
     background: rgba(5, 5, 20, 0.95);
     backdrop-filter: blur(10px);
@@ -732,7 +719,6 @@ a {
     }
 }
 
-/* ===== АДАПТАЦИЯ ===== */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -772,14 +758,12 @@ a {
     }
 }
 
-/* ===== CSS-ГРАДИЕНТЫ ===== */
 .gradient-text {
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* ===== ИНТЕРАКТИВНАЯ КАРТА ===== */
 .map-section {
     padding: 60px 0;
 }
@@ -806,7 +790,6 @@ a {
     animation: fadeInUp 0.5s ease;
 }
 
-/* ===== ЦИТАТЫ ===== */
 .quote-section {
     padding: 60px 0;
     background: var(--gradient-cosmic);
@@ -847,7 +830,6 @@ a {
     transform: scale(1.05);
 }
 
-/* ===== СТИЛИЗОВАННЫЕ ЗАГОЛОВКИ ===== */
 .page-header {
     background: var(--gradient-cosmic);
     color: white;
@@ -860,7 +842,6 @@ a {
     margin-bottom: 1rem;
 }
 
-/* ===== КОНТЕНТ ===== */
 .content-section {
     padding: 60px 0;
 }
@@ -938,7 +919,6 @@ a {
     width: 100%;
 }
 
-/* Стили для интерактивного фона на главной */
 .interactive-bg {
     position: fixed;
     top: 0;
@@ -959,7 +939,6 @@ a {
     cursor: crosshair;
 }
 
-/* Анимации для контента поверх фона */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -972,14 +951,13 @@ a {
 }
 
 .modal {
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .navbar {
     z-index: 100;
 }
 
-/* Стили для кнопок фильтрации */
 .filter-btn {
     padding: 8px 20px;
     border: 2px solid #6c5ce7;
@@ -997,7 +975,6 @@ a {
     color: white;
 }
 
-/* Стили для галереи */
 .gallery-item:hover .gallery-image img {
     transform: scale(1.1);
 }
@@ -1006,7 +983,6 @@ a {
     opacity: 1;
 }
 
-/* Стили для модального окна */
 .modal {
     animation: fadeIn 0.3s ease;
 }
@@ -1026,7 +1002,6 @@ a {
     }
 }
 
-/* Стили для страницы Звёздный след */
 .color-option {
     transition: all 0.3s;
 }
