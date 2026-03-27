@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Главная — Человек и Вселенная{% endblock %}
+
+{% block content %}
+<div class="content-card" style="text-align: center; max-width: 800px;">
+    <h1 class="page-title" style="font-size: 3rem;">Человек — это часть Вселенной</h1>
+    <p style="font-size: 1.2rem; color: #ffffff; margin-bottom: 2rem;">
+        Мы не просто наблюдатели космоса. Мы — космос, осознающий себя.
+    </p>
+    <p style="font-size: 1rem; color: #ffffff; margin-bottom: 2rem;">
+        Назаров Никита Васильевич (курировал Трофимов Юрий Александрович)
+    </p>
+    <p style="font-size: 1rem; color: #ffffff; margin-bottom: 2rem;">
+        Сайт сделан специально для X Ежегодного открытого конкурса Веб-сайтов учащихся образовательных учреждений "Сделай сайт своими руками" ЧОУ "Первая гимназия Максимум"
+    </p>
+    <a href="{{ url_for('about') }}" class="btn btn-primary btn-large" style="margin-bottom: 40px; display: inline-block;">
+        Начать исследование →
+    </a>
+    
+    <div class="stats-badge" style="display: flex; justify-content: center; gap: 40px; margin-top: 20px; padding: 20px; background: rgba(0, 0, 0, 0.5); border-radius: 20px;">
+        <div class="stat-item">
+            <span class="stat-number" id="starCount" style="color: #00cec9; font-size: 2rem; font-weight: bold;">0</span>
+            <span class="stat-label" style="color: rgba(255,255,255,0.8);">✨ звёзд в поле зрения</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="connectionCount" style="color: #00cec9; font-size: 2rem; font-weight: bold;">0</span>
+            <span class="stat-label" style="color: rgba(255,255,255,0.8);">🔗 связей между ними</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

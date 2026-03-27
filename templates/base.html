@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Человек и Вселенная — исследование места человека в космосе, истории открытий и будущего человечества">
+    <title>{% block title %}Человек и Вселенная{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            min-height: 100vh;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: radial-gradient(ellipse at center, #0a0a2a 0%, #000 100%);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .starry-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 1;
+            cursor: crosshair;
+        }
+        
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            pointer-events: none;
+            padding-bottom: 50px;
+        }
+        
+        .content-card, 
+        .content-card-full,
+        .navbar,
+        .footer,
+        .btn,
+        .filter-btn,
+        .gallery-item,
+        .modal,
+        .contact-form-container,
+        .social-card,
+        .star-form-container,
+        .galaxy-container,
+        .recent-stars,
+        .color-option {
+            pointer-events: auto;
+        }
+        
+        .content-card {
+            max-width: 1200px;
+            margin: 100px auto 50px auto;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(108, 92, 231, 0.5);
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-card-full {
+            max-width: 1400px;
+            margin: 100px auto 50px auto;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(108, 92, 231, 0.5);
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #6c5ce7, #00cec9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .content-card p,
+        .content-card-full p,
+        .content-card li,
+        .content-card-full li {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        .content-card h2,
+        .content-card-full h2,
+        .content-card h3,
+        .content-card-full h3 {
+            color: #fff;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-card, .content-card-full {
+                margin: 80px 20px 40px 20px;
+                padding: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="starry-bg"></div>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}">
+                    <span class="brand-icon">🌌</span>
+                    <span class="brand-text">Человек <span class="accent">|</span> Вселенная</span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Главная</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link">Исследование</a></li>
+                <li><a href="{{ url_for('gallery') }}" class="nav-link">Галерея</a></li>
+                <li><a href="{{ url_for('star_trail') }}" class="nav-link">✨ Звёздный след</a></li>
+                <li><a href="{{ url_for('contacts') }}" class="nav-link">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="content-overlay">
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Человек — часть Вселенной</h3>
+                <p>Исследование места человека в бесконечном космосе</p>
+                <p class="footer-copyright">© {{ current_year }} Все права защищены</p>
+            </div>
+            <div class="footer-links">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Главная</a></li>
+                    <li><a href="{{ url_for('about') }}">Исследование</a></li>
+                    <li><a href="{{ url_for('gallery') }}">Галерея</a></li>
+                    <li><a href="{{ url_for('star_trail') }}">Звёздный след</a></li>
+                    <li><a href="{{ url_for('contacts') }}">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>📧 {{ contacts.email }}</p>
+                <p>📞 {{ contacts.phone }}</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">📱 Telegram</a>
+                    <a href="#" class="social-icon">📘 VK</a>
+                    <a href="#" class="social-icon">▶️ YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/starryBackground.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
